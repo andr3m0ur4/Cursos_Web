@@ -7,14 +7,13 @@ include 'db.php';
 include 'header.php';
 
 # Conteúdo da página
-if(isset($_GET['pagina'])){
+if ( isset ( $_GET['pagina'] ) ) {
 	$pagina = $_GET['pagina'];
-}
-else{
+} else {
 	$pagina = 'home';
 }
 
-switch($pagina){
+switch ( $pagina ) {
 	case 'cursos': include 'views/cursos.php'; break;
 	case 'alunos': include 'views/alunos.php'; break;
 	case 'matriculas': include 'views/matriculas.php'; break;
