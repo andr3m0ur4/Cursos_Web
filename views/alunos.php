@@ -11,13 +11,23 @@
 	</thead>
 	<tbody>
 		<?php 
-			while($linha = mysqli_fetch_array($consulta_alunos)){
+			while ( $linha = mysqli_fetch_assoc ( $consulta_alunos ) ) {
 				echo "<tr>
-						<td >{$linha['nome_aluno']}</td>
+						<td>{$linha['nome_aluno']}</td>
 						<td>{$linha['data_nascimento']}</td>";
 			?>
-			<td><a href="?pagina=inserir_aluno&editar=<?php echo $linha['id_aluno']; ?>">Editar</a></td>
-			<td><a href="deleta_aluno.php?id_aluno=<?php echo $linha['id_aluno']; ?>">Deletar</a></td>
+			<td><a href="?pagina=inserir_aluno&editar=<?php echo $linha['id_aluno']; ?>">
+					<span style="font-size: 1.2em; color: Dodgerblue;">
+						<i class="fas fa-user-edit"></i>
+					</span>
+				</a>
+			</td>
+			<td><a href="deleta_aluno.php?id_aluno=<?php echo $linha['id_aluno']; ?>">
+					<span style="font-size: 1.2em; color: Tomato;">
+						<i class="fas fa-user-times"></i>
+					</span>
+				</a>
+			</td>
 		</tr>
 		<?php
 			}
