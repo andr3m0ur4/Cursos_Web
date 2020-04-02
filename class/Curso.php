@@ -16,7 +16,7 @@
 
 		public function __get($atributo)
 		{
-			return $this -> $attr;
+			return $this -> $atributo;
 		}
 
 		public function buscar()
@@ -28,6 +28,10 @@
 
 		public function inserir()
 		{
+			if (empty($this -> nome_curso)) {
+				return false;
+			}
+			
 			$instrucao = "
 				INSERT INTO tb_cursos (nome_curso, resumo, investimento, carga_horaria)
 				VALUES (
@@ -38,11 +42,17 @@
 				)
 			";
 
-			mysqli_query($this -> conexao, $instrucao);
+			$retorno = mysqli_query($this -> conexao, $instrucao);
+
+			return $retorno;
 		}
 
 		public function editar()
 		{
+			if (empty($this -> nome_curso)) {
+				return false;
+			}
+
 			$instrucao = "
 				UPDATE tb_cursos 
 				SET 
@@ -53,12 +63,15 @@
 				WHERE id_curso = {$this -> id_curso}
 			";
 
-			mysqli_query($this -> conexao, $instrucao);
+			$retorno = mysqli_query($this -> conexao, $instrucao);
+
+			return $retorno;
 		}
 
 		public function excluir($id_curso)
 		{
 			$instrucao = "DELETE FROM tb_cursos WHERE id_curso = $id_curso";
-			mysqli_query($this -> conexao, $instrucao);
+			$retorno = mysqli_query($this -> conexao, $instrucao);
+			return $retorno;
 		}
 	}

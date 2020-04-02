@@ -10,6 +10,8 @@
 
 	$aluno_curso = new AlunoCurso($db -> conexao);
 
-	$aluno_curso -> excluir($_GET['id_aluno'], $_GET['id_curso']);
-
-	header('location: index.php?pagina=matriculas');
+	if ($aluno_curso -> excluir($_GET['id_aluno'], $_GET['id_curso'])) {
+		header('location: index.php?pagina=matriculas');
+	} else {
+		header('location: index.php?pagina=matriculas&erro');
+	}

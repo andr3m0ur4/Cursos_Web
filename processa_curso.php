@@ -10,10 +10,12 @@
 
 	$curso = new Curso($db -> conexao);
 
-	foreach ($_POST as $key => $value) {
-		$curso -> __set($key, $value);
+	foreach ($_POST as $chave => $valor) {
+		$curso -> __set($chave, $valor);
 	}
 
-	$curso -> inserir();
-
-	header('location: index.php?pagina=cursos');
+	if ($curso -> inserir()) {
+		header('location: index.php?pagina=cursos');
+	} else {
+		header('location: index.php?pagina=inserir_curso&erro');
+	}

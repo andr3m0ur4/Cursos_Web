@@ -10,6 +10,8 @@
 
 	$aluno = new Aluno($db -> conexao);
 
-	$aluno -> excluir($_GET['id_aluno']);
-
-	header('location: index.php?pagina=alunos');
+	if ($aluno -> excluir($_GET['id_aluno'])) {
+		header('location: index.php?pagina=alunos');
+	} else {
+		header('location: index.php?pagina=alunos&erro');
+	}

@@ -16,7 +16,7 @@
 
 		public function __get($atributo)
 		{
-			return $this -> $attr;
+			return $this -> $atributo;
 		}
 
 		public function buscar()
@@ -28,6 +28,11 @@
 
 		public function inserir()
 		{
+			if (empty($this -> nome) || empty($this -> idade) || empty($this -> email) || empty($this -> interesse))
+			{
+				return false;
+			}
+
 			$instrucao = "
 				INSERT INTO tb_alunos (nome, idade, interesse, email, estado) 
 				VALUES (
@@ -39,11 +44,18 @@
 				)
 			";
 
-			mysqli_query($this -> conexao, $instrucao);
+			$retorno = mysqli_query($this -> conexao, $instrucao);
+
+			return $retorno;
 		}
 
 		public function editar()
 		{
+			if (empty($this -> nome) || empty($this -> idade) || empty($this -> email) || empty($this -> interesse))
+			{
+				return false;
+			}
+
 			$instrucao = "
 				UPDATE tb_alunos
 				SET 
@@ -55,12 +67,15 @@
 				WHERE id_aluno = {$this -> id_aluno}
 			";
 
-			mysqli_query($this -> conexao, $instrucao);
+			$retorno = mysqli_query($this -> conexao, $instrucao);
+
+			return $retorno;
 		}
 
 		public function excluir($id_aluno)
 		{
 			$instrucao = "DELETE FROM tb_alunos WHERE id_aluno = $id_aluno";
-			mysqli_query($this -> conexao, $instrucao);
+			$retorno = mysqli_query($this -> conexao, $instrucao);
+			return $retorno;
 		}
 	}

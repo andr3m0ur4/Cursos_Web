@@ -42,6 +42,16 @@
 				<br>
 				<button class="btn btn-success" type="submit">Editar aluno</button>
 			</form>
+
+			<?php if (isset($_GET['erro'])) : ?>
+				<div class="alert alert-danger mt-3" role="alert">
+					Você deve preencher todos os campos para editar o aluno.
+				</div>
+			<?php endif ?>
 		<?php endif ?>
 	<?php endforeach ?>
+<?php else : ?>
+	<script>
+		location.href = 'index.php?pagina=alunos'
+	</script>
 <?php endif ?>

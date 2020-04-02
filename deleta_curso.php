@@ -10,6 +10,8 @@
 
 	$curso = new Curso($db -> conexao);
 
-	$curso -> excluir($_GET['id_curso']);
-
-	header('location: index.php?pagina=cursos');
+	if ($curso -> excluir($_GET['id_curso'])) {
+		header('location: index.php?pagina=cursos');
+	} else {
+		header('location: index.php?pagina=cursos&erro');
+	}

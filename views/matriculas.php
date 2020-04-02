@@ -5,7 +5,7 @@
 		<tr>
 			<th>Nome do aluno</th>
 			<th>Nome do curso</th>
-			<th>Deletar</th>
+			<th>Excluir</th>
 		</tr>
 	</thead>
 	<tbody>

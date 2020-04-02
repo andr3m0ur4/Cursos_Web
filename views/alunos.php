@@ -5,8 +5,10 @@
 		<tr>
 			<th>Nome aluno</th>
 			<th>Idade</th>
+			<th>Interesse</th>
+			<th>E-mail</th>
 			<th>Editar</th>
-			<th>Deletar</th>
+			<th>Excluir</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -14,6 +16,8 @@
 			<tr>
 				<td><?= $aluno['nome'] ?></td>
 				<td><?= $aluno['idade'] ?></td>
+				<td><?= $aluno['interesse'] ?></td>
+				<td><?= $aluno['email'] ?></td>
 				<td>
 					<a href="?pagina=editar_aluno&id_aluno=<?= $aluno['id_aluno'] ?>">
 						<span style="font-size: 1.2em; color: Dodgerblue;">
@@ -31,5 +35,13 @@
 			</tr>
 		<?php endforeach ?>
 	</tbody>
+
+	<?php if (isset($_GET['erro'])) : ?>
+		<tfoot>
+			<div class="alert alert-danger mt-3" role="alert">
+				Não é possivel excluir este aluno, ele está matriculado em algum curso!
+			</div>
+		</tfoot>
+	<?php endif ?>
 
 </table>

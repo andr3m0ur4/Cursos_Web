@@ -25,3 +25,9 @@
 	<br>
 	<button type="submit" class="btn btn-success">Cadastrar aluno</button>
 </form>
+
+<?php if (isset($_GET['erro'])) : ?>
+	<div class="alert alert-danger mt-3" role="alert">
+		Você deve preencher todos os campos para cadastrar um novo aluno.
+	</div>
+<?php endif ?>

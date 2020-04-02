@@ -10,10 +10,12 @@
 
 	$aluno_curso = new AlunoCurso($db -> conexao);
 
-	foreach ($_POST as $key => $value) {
-		$aluno_curso -> __set($key, $value);
+	foreach ($_POST as $chave => $valor) {
+		$aluno_curso -> __set($chave, $valor);
 	}
 
-	$aluno_curso -> inserir();
-
-	header('location: index.php?pagina=matriculas');
+	if ($aluno_curso -> inserir()) {
+		header('location: index.php?pagina=matriculas');
+	} else {
+		header('location: index.php?pagina=inserir_matricula&erro');
+	}

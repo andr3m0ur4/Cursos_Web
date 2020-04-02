@@ -10,10 +10,13 @@
 
 	$aluno = new Aluno($db -> conexao);
 
-	foreach ($_POST as $key => $value) {
-		$aluno -> __set($key, $value);
+	foreach ($_POST as $chave => $valor) {
+		$aluno -> __set($chave, $valor);
 	}
 
-	$aluno -> editar();
-
-	header('location: index.php?pagina=alunos');
+	if ($aluno -> editar()) {
+		header('location: index.php?pagina=alunos');
+	} else {
+		$id_aluno = $aluno -> __get('id_aluno');
+		header("location: index.php?pagina=editar_aluno&id_aluno=$id_aluno&erro");
+	}

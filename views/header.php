@@ -14,10 +14,10 @@
 	</head>
 
 	<body>
-		<header>
+		<header class="fixed-top">
 			<div class="container">
 				<a href="?pagina=home">
-					<img src="img/logo1.png" title="Logo" alt="Logo" height="90" width="145">
+					<img src="img/logo.png" title="Logo" alt="Logo" height="90" width="145">
 				</a>
 				<div id="menu">
 					<a href="?pagina=cursos">Cursos</a>
@@ -30,4 +30,4 @@
 			</div>
 		</header>
 
-		<div id="conteudo" class="container">
+		<div id="conteudo" class="container mt-5">

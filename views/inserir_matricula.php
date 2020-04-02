@@ -21,3 +21,9 @@
 	<br>
 	<button type="submit" class="btn btn-success">Matricular aluno no curso</button>
 </form>
+
+<?php if (isset($_GET['erro'])) : ?>
+	<div class="alert alert-danger mt-3" role="alert">
+		Você deve selecionar um aluno e um curso para cadastrar a nova matrícula.
+	</div>
+<?php endif ?>

@@ -10,10 +10,13 @@
 
 	$curso = new Curso($db -> conexao);
 
-	foreach ($_POST as $key => $value) {
-		$curso -> __set($key, $value);
+	foreach ($_POST as $chave => $valor) {
+		$curso -> __set($chave, $valor);
 	}
 
-	$curso -> editar();
-
-	header('location: index.php?pagina=cursos');
+	if ($curso -> editar()) {
+		header('location: index.php?pagina=cursos');
+	} else {
+		$id_curso = $curso -> __get('id_curso');
+		header("location: index.php?pagina=editar_curso&id_curso=$id_curso&erro");
+	}

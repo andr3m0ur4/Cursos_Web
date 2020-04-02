@@ -16,7 +16,7 @@
 
 		public function __get($atributo)
 		{
-			return $this -> $attr;
+			return $this -> $atributo;
 		}
 
 		public function buscar()
@@ -48,7 +48,9 @@
 				VALUES ({$this -> id_aluno}, {$this -> id_curso})
 			";
 
-			mysqli_query($this -> conexao, $instrucao);
+			$retorno = mysqli_query($this -> conexao, $instrucao);
+
+			return $retorno;
 		}
 
 		public function excluir($id_aluno, $id_curso)
@@ -58,6 +60,8 @@
 				WHERE id_aluno = $id_aluno AND id_curso = $id_curso
 			";
 			
-			mysqli_query($this -> conexao, $instrucao);
+			$retorno = mysqli_query($this -> conexao, $instrucao);
+
+			return $retorno;
 		}
 	}
