@@ -10,12 +10,12 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($db -> buscarAlunos() as $aluno) : ?>
+		<?php foreach ($aluno -> buscar() as $aluno) : ?>
 			<tr>
 				<td><?= $aluno['nome'] ?></td>
 				<td><?= $aluno['idade'] ?></td>
 				<td>
-					<a href="?pagina=inserir_aluno&editar=<?= $aluno['id_aluno'] ?>">
+					<a href="?pagina=editar_aluno&id_aluno=<?= $aluno['id_aluno'] ?>">
 						<span style="font-size: 1.2em; color: Dodgerblue;">
 							<i class="fas fa-user-edit"></i>
 						</span>

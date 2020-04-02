@@ -1,13 +1,19 @@
 <?php 
 
-include_once 'db.php';
+	# Arquivo de configuração
+	include './config/config.php';
 
-$nome_curso = $_POST['nome_curso'];
-$carga_horaria = $_POST['carga_horaria'];
+	include_once './db/DB.php';
+	include_once './class/Curso.php';
 
-$query = "INSERT INTO cursos ( nome_curso, carga_horaria ) 
-			VALUES ( '$nome_curso', $carga_horaria )";
+	$db = new DB();
 
-mysqli_query ( $conexao, $query );
+	$curso = new Curso($db -> conexao);
 
-header ( 'location:index.php?pagina=cursos' );
+	foreach ($_POST as $key => $value) {
+		$curso -> __set($key, $value);
+	}
+
+	$curso -> inserir();
+
+	header('location: index.php?pagina=cursos');

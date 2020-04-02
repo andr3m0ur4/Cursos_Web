@@ -10,7 +10,7 @@
 	</thead>
 	<tbody>
 
-		<?php foreach ($db -> buscarAlunosCursos() as $aluno_curso) : ?>
+		<?php foreach ($aluno_curso -> buscar() as $aluno_curso) : ?>
 			<tr>
 				<td><?= $aluno_curso['nome'] ?></td>
 				<td><?= $aluno_curso['nome_curso'] ?></td>

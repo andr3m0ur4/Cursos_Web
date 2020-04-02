@@ -1,15 +1,19 @@
 <?php 
 
-include 'db.php';
+	# Arquivo de configuração
+	include './config/config.php';
 
-$id_aluno = $_POST['id_aluno'];
-$nome_aluno = $_POST['nome_aluno'];
-$data_nascimento = $_POST['data_nascimento'];
+	include_once './db/DB.php';
+	include_once './class/Aluno.php';
 
+	$db = new DB();
 
-$query = "UPDATE alunos SET nome_aluno = '$nome_aluno', data_nascimento = '$data_nascimento' 
-			WHERE id_aluno = $id_aluno";
+	$aluno = new Aluno($db -> conexao);
 
-mysqli_query ( $conexao, $query );
+	foreach ($_POST as $key => $value) {
+		$aluno -> __set($key, $value);
+	}
 
-header ( 'location:index.php?pagina=alunos' );
+	$aluno -> editar();
+
+	header('location: index.php?pagina=alunos');

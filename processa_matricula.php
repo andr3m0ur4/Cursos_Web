@@ -1,13 +1,19 @@
 <?php 
 
-include 'db.php';
+	# Arquivo de configuração
+	include './config/config.php';
 
-$id_aluno = $_POST['escolha_aluno'];
-$id_curso = $_POST['escolha_curso'];
+	include_once './db/DB.php';
+	include_once './class/AlunoCurso.php';
 
-$query = "INSERT INTO ALUNOS_CURSOS ( id_aluno, id_curso ) 
-			VALUES ( $id_aluno, $id_curso )";
+	$db = new DB();
 
-mysqli_query ( $conexao, $query );
+	$aluno_curso = new AlunoCurso($db -> conexao);
 
-header ( 'location:index.php?pagina=matriculas' );
+	foreach ($_POST as $key => $value) {
+		$aluno_curso -> __set($key, $value);
+	}
+
+	$aluno_curso -> inserir();
+
+	header('location: index.php?pagina=matriculas');

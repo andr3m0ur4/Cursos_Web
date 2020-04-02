@@ -1,11 +1,15 @@
 <?php 
 
-include 'db.php';
+	# Arquivo de configuração
+	include './config/config.php';
 
-$id_aluno = $_GET['id_aluno'];
+	include_once './db/DB.php';
+	include_once './class/Aluno.php';
 
-$query = "DELETE FROM alunos WHERE id_aluno = $id_aluno";
+	$db = new DB();
 
-mysqli_query ( $conexao, $query );
+	$aluno = new Aluno($db -> conexao);
 
-header ( 'location:index.php?pagina=alunos' );
+	$aluno -> excluir($_GET['id_aluno']);
+
+	header('location: index.php?pagina=alunos');

@@ -11,13 +11,13 @@
 	</thead>
 
 	<tbody>
-		<?php foreach ($db -> buscarCursos() as $curso) : ?>
+		<?php foreach ($curso -> buscar() as $curso) : ?>
 
 			<tr>
 				<td><?= $curso['nome_curso'] ?></td>
 				<td><?= $curso['carga_horaria'] ?></td>
 				<td>
-					<a href="?pagina=inserir_curso&editar=<?= $curso['id_curso'] ?>">
+					<a href="?pagina=editar_curso&id_curso=<?= $curso['id_curso'] ?>">
 						<span style="font-size: 1.2em; color: Dodgerblue;">
 							<i class="fas fa-edit"></i>
 						</span>

@@ -7,6 +7,14 @@
 	include './db/DB.php';
 	$db = new DB();
 
+	# Classes
+	include './class/Curso.php';
+	include './class/Aluno.php';
+	include './class/AlunoCurso.php';
+	$curso = new Curso($db -> conexao);
+	$aluno = new Aluno($db -> conexao);
+	$aluno_curso = new AlunoCurso($db -> conexao);
+
 	# Cabeçalho
 	include './views/header.php';
 
@@ -45,6 +53,14 @@
 
 		case 'inserir_curso': 
 			include './views/inserir_curso.php'; 
+			break;
+
+		case 'editar_curso': 
+			include './views/editar_curso.php'; 
+			break;
+
+		case 'editar_aluno': 
+			include './views/editar_aluno.php'; 
 			break;
 
 		default: 
