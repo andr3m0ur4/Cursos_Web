@@ -6,13 +6,13 @@
 }
 
 body { 
-	font-family: helvetica, arial; 
+	font-family: Helvetica, Arial, sans-serif; 
 	font-size: 16px; 
 	color: #333; 
 }
 
 header { 
-	height: 89px; 
+	height: auto;
 	background-color: #262626; 
 }
 
@@ -26,13 +26,12 @@ footer {
 }
 
 /* id */
-#conteudo { 
-	padding: 100px 0; 
+#conteudo {
+	padding: 100px 0;
 }
 
-#menu { 
-	float:right; 
-	padding: 32px 0; 
+#menu {
+	padding: 33px 0;
 }
 
 #menu a { 

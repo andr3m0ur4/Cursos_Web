@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 	<head>
-		<title>Curso Web</title>
+		<title>Cursos Web</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -15,7 +15,7 @@
 
 	<body>
 		<header class="fixed-top">
-			<div class="container">
+			<div class="container d-flex justify-content-between">
 				<a href="?pagina=home">
 					<img src="img/logo.png" title="Logo" alt="Logo" height="90" width="145">
 				</a>
