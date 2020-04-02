@@ -14,7 +14,7 @@
 	</head>
 
 	<body>
-		<header class="fixed-top">
+		<header class="sticky-top">
 			<div class="container d-flex justify-content-between">
 				<a href="?pagina=home">
 					<img src="img/logo.png" title="Logo" alt="Logo" height="90" width="145">
@@ -30,4 +30,4 @@
 			</div>
 		</header>
 
-		<div id="conteudo" class="container mt-5">
+		<div id="conteudo" class="container">
