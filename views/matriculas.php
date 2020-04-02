@@ -1,31 +1,27 @@
-<a class="btn btn-success" href="?pagina=inserir_matricula">Inserir nova matricula</a>
+<a class="btn btn-success mb-3" href="?pagina=inserir_matricula">Inserir nova matricula</a>
 
 <table class="table table-hover table-striped" id="matriculas">
 	<thead>
 		<tr>
-			<th>Nome aluno</th>
-			<th>Nome curso</th>
+			<th>Nome do aluno</th>
+			<th>Nome do curso</th>
 			<th>Deletar</th>
 		</tr>
 	</thead>
 	<tbody>
 
-		<?php 
-			while ( $linha = mysqli_fetch_assoc ( $consulta_matriculas ) ) {
-				echo "<tr>
-						<td>{$linha['nome_aluno']}</td>
-						<td>{$linha['nome_curso']}</td>";
-		?>
-			<td>
-				<a href="deleta_matricula.php?id_aluno_curso=<?php echo $linha['id_aluno_curso']; ?>">
-					<span style="font-size: 1.2em; color: Tomato;">
-						<i class="fas fa-trash-alt"></i>
-					</span>
-				</a>
-			</td>
-		</tr>
-		<?php		
-			}
-		?>
+		<?php foreach ($db -> buscarAlunosCursos() as $aluno_curso) : ?>
+			<tr>
+				<td><?= $aluno_curso['nome'] ?></td>
+				<td><?= $aluno_curso['nome_curso'] ?></td>
+				<td>
+					<a href="deleta_matricula.php?id_aluno=<?= $aluno_curso['id_aluno'] ?>&id_curso=<?= $aluno_curso['id_curso'] ?>">
+						<span style="font-size: 1.2em; color: Tomato;">
+							<i class="fas fa-trash-alt"></i>
+						</span>
+					</a>
+				</td>
+			</tr>
+		<?php endforeach ?>
 	</tbody>
 </table>

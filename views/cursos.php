@@ -1,4 +1,5 @@
-<a class="btn btn-success" href="?pagina=inserir_curso">Inserir novo curso</a>
+<a class="btn btn-success mb-3" href="?pagina=inserir_curso">Inserir novo curso</a>
+
 <table class="table table-hover table-striped" id="cursos">
 	<thead>
 		<tr>
@@ -10,28 +11,28 @@
 	</thead>
 
 	<tbody>
-		<?php 
-			while ( $linha = mysqli_fetch_assoc ( $consulta_cursos ) ) {
-				echo "<tr>
-						<td>{$linha['nome_curso']}</td>
-						<td>{$linha['carga_horaria']}</td>";
-		?>
-			<td><a href="?pagina=inserir_curso&editar=<?php echo $linha['id_curso']; ?>">
-					<span style="font-size: 1.2em; color: Dodgerblue;">
-						<i class="fas fa-edit"></i>
-					</span>
-				</a>
-			</td>
-			<td><a href="deleta_curso.php?id_curso=<?php echo $linha['id_curso']; ?>">
-					<span style="font-size: 1.2em; color: Tomato;">
-						<i class="fas fa-trash-alt"></i>
-					</span>
-				</a>
-			</td>
-		</tr>
-		<?php
-			}
-		?>
+		<?php foreach ($db -> buscarCursos() as $curso) : ?>
+
+			<tr>
+				<td><?= $curso['nome_curso'] ?></td>
+				<td><?= $curso['carga_horaria'] ?></td>
+				<td>
+					<a href="?pagina=inserir_curso&editar=<?= $curso['id_curso'] ?>">
+						<span style="font-size: 1.2em; color: Dodgerblue;">
+							<i class="fas fa-edit"></i>
+						</span>
+					</a>
+				</td>
+				<td>
+					<a href="deleta_curso.php?id_curso=<?= $curso['id_curso'] ?>">
+						<span style="font-size: 1.2em; color: Tomato;">
+							<i class="fas fa-trash-alt"></i>
+						</span>
+					</a>
+				</td>
+			</tr>
+
+		<?php endforeach ?>
 	</tbody>
 
 </table>

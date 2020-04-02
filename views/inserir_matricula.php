@@ -1,28 +1,23 @@
 <h1>Inserir nova matrícula</h1>
 
 <form method="post" action="processa_matricula.php">
-	<br>
-	<p class="badge badge-secondary">Selecione o aluno</p>
-	<select class="form-control" name="escolha_aluno">
+	<label class="badge badge-secondary">Selecione o aluno</label>
+	<select class="form-control" name="id_aluno">
 		<option>Selecione um aluno</option>
-		<?php 
-		while ( $linha = mysqli_fetch_assoc ( $consulta_alunos ) ) {
-			echo "<option value='{$linha['id_aluno']}'>{$linha['nome_aluno']}</option>";
-		}
-		?>
+		<?php foreach ($db -> buscarAlunos() as $aluno) : ?>
+			<option value="<?= $aluno['id_aluno'] ?>"><?= $aluno['nome'] ?></option>
+		<?php endforeach ?>
 	</select>
 
-	<br><br>
+	<br>
 
-	<p class="badge badge-secondary">Selecione o curso</p>
-	<select class="form-control" name="escolha_curso">
+	<label class="badge badge-secondary">Selecione o curso</label>
+	<select class="form-control" name="id_curso">
 		<option>Selecione um curso</option>
-		<?php 
-		while ( $linha = mysqli_fetch_assoc ( $consulta_cursos ) ) {
-			echo "<option value='{$linha['id_curso']}'>{$linha['nome_curso']}</option>";
-		}
-		?>
+		<?php foreach ($db -> buscarCursos() as $curso) : ?>
+			<option value="<?= $curso['id_curso'] ?>"><?= $curso['nome_curso'] ?></option>
+		<?php endforeach ?>
 	</select>
-	<br><br>
-	<input class="btn btn-success" type="submit" value="Matricular aluno no curso">
+	<br>
+	<button type="submit" class="btn btn-success">Matricular aluno no curso</button>
 </form>

@@ -1,9 +1,8 @@
 <?php  
 
-session_start ( );
+	session_start();
 
-unset ( $_SESSION['login'] );
-unset ( $_SESSION['usuario'] ); 
+	unset($_SESSION['login']);
+	unset($_SESSION['usuario']); 
 
-header ( 'location:index.php' );
-?>
+	header('location: index.php');
