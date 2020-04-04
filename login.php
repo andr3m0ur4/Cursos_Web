@@ -1,6 +1,6 @@
 <?php
 
-	# Arquivo de configuração
+	# Arquivo de configuração - teste
 	require './config/config.php';
 
 	$usuario = addslashes($_POST['usuario']);
